@@ -5,7 +5,7 @@ var mongoose=require('mongoose');
 const customerRoutes = require('./CustomerRoutes')
 
 //var db="mongodb+srv://noorulhoda:no3011997@cluster0.z7j3w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-var db='mongodb+srv://m001-student:m001-mongodb-basics@sandbox.j7bds.mongodb.net/test'
+var db='mongodb+srv://khairokom:khairokom@cluster0.jo718.mongodb.net/khairokom'
 mongoose.connect(db,{useNewUrlParser: true,  useUnifiedTopology: true});
 
 
