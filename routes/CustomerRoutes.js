@@ -4,6 +4,9 @@ module.exports = (app) =>{
   app.get('/api/customer',
     CustomerController.all);
 
+   app.get('/', function(req, res){
+      res.send('hello')
+  });
   app.post('/api/customer',
     CustomerController.create);
 
