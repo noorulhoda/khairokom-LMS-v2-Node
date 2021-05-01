@@ -17,5 +17,6 @@ steps:
 
 - script: |
     npm install
+    npm fund
     npm app.js
   displayName: 'npm install and build'
