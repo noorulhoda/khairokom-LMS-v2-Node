@@ -22,4 +22,4 @@ steps:
     npm app.js
   displayName: 'npm install and build'
 
-  - task: PublishBuildArtifacts@1
+ 
