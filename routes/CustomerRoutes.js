@@ -1,4 +1,4 @@
-const CustomerController  = require('../controllers/CustomerController');
+const CustomerController  = require(__dirname+'controllers/CustomerController');
 
 module.exports = (app) =>{
   app.get('/api/customer',
