@@ -14,11 +14,7 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
-- task: PublishPipelineArtifact@0
-  displayName: 'Publish pipeline artifacts'
-  inputs:
-    targetPath: $(Build.ArtifactStagingDirectory)/
-    archiveFilePatterns: '**/*.zip' 
+
   
 
 - script: |
@@ -26,5 +22,11 @@ steps:
     npm fund
     npm app.js
   displayName: 'npm install and build'
+
+  - task: PublishPipelineArtifact@0
+  displayName: 'Publish pipeline artifacts'
+  inputs:
+    targetPath: $(Build.ArtifactStagingDirectory)/
+    archiveFilePatterns: '**/*.zip' 
 
  
