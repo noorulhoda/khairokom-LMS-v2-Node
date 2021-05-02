@@ -5,7 +5,7 @@ module.exports = (app) =>{
     CustomerController.all);
 
    app.get('/', function(req, res){
-      res.send('hellooooooooooooooooooooooo')
+      res.send('hellooooooooooo')
   });
   app.post('/api/customer',
     CustomerController.create);
