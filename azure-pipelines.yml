@@ -22,7 +22,7 @@ steps:
     npm fund
     npm app.js
   displayName: 'npm install and build'
-
+steps:
   - task: PublishPipelineArtifact@0
   displayName: 'Publish pipeline artifacts'
   inputs:
