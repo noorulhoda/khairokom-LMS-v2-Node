@@ -33,5 +33,10 @@ module.exports = {
     user.findByIdAndRemove({_id: userId})
       .then(user => res.status(204).send(user))
       .catch(next);
+  },
+  findByUserName(req, res, next){
+    user.find({userName:req.params.userName}).limit(1)
+    .then(user => res.status(200).send(user))
+    .catch(next)
   }
 };
