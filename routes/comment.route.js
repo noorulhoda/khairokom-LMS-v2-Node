@@ -1,4 +1,4 @@
-const CommentController  = require('../controllers/CommentController');
+const CommentController  = require('../controllers/comment.controller');
 
 module.exports = (app) =>{
   app.get('/api/comment',
