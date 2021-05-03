@@ -1,4 +1,4 @@
-const userController  = require('../controllers/userController');
+const userController  = require('../controllers/user.controller');
 
 module.exports = (app) =>{
   app.get('/api/user',
@@ -23,7 +23,7 @@ module.exports = (app) =>{
 
     
 //needs more work :)
-
+/*
 app.post('/api/register', (req, res) => {
     let users = [];
     const data = fs.readFileSync("./users.json", "utf-8");
@@ -57,7 +57,7 @@ app.post('/api/login', (req, res) => {
         }
     })
 })
-
+*/
 
 
 
