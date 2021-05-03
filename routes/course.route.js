@@ -1,4 +1,4 @@
-const CourseController  = require('../controllers/CourseController');
+const CourseController  = require('../controllers/course.controller');
 
 module.exports = (app) =>{
   app.get('/api/course',
