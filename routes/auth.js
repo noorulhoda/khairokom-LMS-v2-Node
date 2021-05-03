@@ -1,7 +1,7 @@
   
 const express = require('express')
 const router = express.Router()
-const User = require('../models/user')
+const User = require('../models/user.model')
 const bcrypt = require('bcrypt')
 const rounds = 10
 
@@ -10,8 +10,8 @@ const tokenSecret = "my-token-secret"
 
 const middleware = require('../middlewares')
 
-router.get('/login', (req, res) => {
-    User.findOne({email: req.body.email})
+router.get('/signin', (req, res) => {
+    User.findOne({userName: req.body.userName})
     .then(user => {
         if(!user) res.status(404).json({error: 'no user with that email found'})
         else {
@@ -31,7 +31,17 @@ router.post('/signup', (req, res) => {
     bcrypt.hash(req.body.password, rounds, (error, hash) => {
         if (error) res.status(500).json(error)
         else {
-            const newUser =  User({email: req.body.email, password: hash})
+            const newUser =  User({
+                email: req.body.email,
+                password: hash,
+                firstName:req.body.firstName ,
+                lastName:req.body.lastName,
+                userName: req.body.userName,
+                role:req.body.role ,
+                gender:req.body.gender,
+                age: req.body.age,
+                img: req.body.img
+            })
             newUser.save()
                 .then(user => {
                     res.status(200).json({token: generateToken(user)})
@@ -44,7 +54,8 @@ router.post('/signup', (req, res) => {
 });
 
 router.get('/jwt-test', middleware.verify , (req, res) => {
-    res.status(200).json(req.user)
+ if(req.user.role=='Admin')res.send('you are admin')
+ else res.send('you are normal user')
 })
 
 function generateToken(user){

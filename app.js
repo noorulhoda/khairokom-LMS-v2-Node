@@ -8,6 +8,12 @@ const categoryRoutes=require('./routes/category.route')
 const classRoutes=require('./routes/class.route')
 const courseRoutes=require('./routes/course.route')
 const commentRoutes=require('./routes/comment.route')
+const authRoute = require('./routes/auth')
+
+
+
+
+
 
 var db='mongodb+srv://khairokom:khairokom@cluster0.jo718.mongodb.net/khairokom'
 mongoose.connect(db,{useNewUrlParser: true,  useUnifiedTopology: true});
@@ -15,10 +21,11 @@ mongoose.connect(db,{useNewUrlParser: true,  useUnifiedTopology: true});
 
 var port=8080;
 app.listen(port,function(){
-    console.log('listening  ... ..'+port);
+    console.log('listening.....'+port);
 })
 
 app.use(bodyParser.json());
+app.use('', authRoute)
 customerRoutes(app)
 userRoutes(app)
 categoryRoutes(app)
