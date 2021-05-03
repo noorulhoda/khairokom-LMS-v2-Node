@@ -3,17 +3,17 @@ var Schema=mongoose.Schema;
 
 var CategorySchema=new Schema({
 
-content:
+Title:
 {
     type: String,
     required: true
 },
-courseID:
+Description:
 {
     type: String,
     required: true
 },
-userID:
+Image:
 {
     type: String,
     required: true
@@ -22,5 +22,5 @@ userID:
 })
 
 
-const Comment = mongoose.model('Comment', CommentSchema);
-module.exports = Comment;
+const Category = mongoose.model('Category', CategorySchema);
+module.exports = Category;
