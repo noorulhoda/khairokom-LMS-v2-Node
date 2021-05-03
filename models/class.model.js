@@ -10,17 +10,17 @@ Number:
 },
 StudentsMinAge:
 {
-    type: Int,
+    type: Number,
     required: true
 },
 StudentsMaxAge:
 {
-    type: Int,
+    type: Number,
     required: true
 },
 StudentGender:
 {
-    type: Char,
+    type: String,
     required: true
 },
 ClassLink:
