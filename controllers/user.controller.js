@@ -12,12 +12,27 @@ module.exports = {
   create(req, res, next){
     const userProps = req.body;
     console.log(userProps);
-    user.create(userProps)
+    let existed=false;
+    user.find({} , (err, users) => {
+      if(err) console.log('erroooooor');
+      users.map(account => {
+        if(account.email==req.body.email||account.userName==req.body.userName ){
+        console.log('this user already taken')
+        existed=true;
+        return
+      }
+      })
+      if(!existed)
+      {
+      user.create(userProps)
       .then(user =>
         res.status(201).send(user)) 
-      .catch(next) 
+      .catch(next)
+    }
+    res.send('this user already taken');
 
-  },
+  })
+},
 
   /*register(req,res,next){
     let users=[];
@@ -43,13 +58,11 @@ login(req,res,next){
             console.log(account.userName +"  "+ req.body.userName)
             if (account.userName == req.body.userName && account.password == req.body.password) {
                 console.log("logined successfully");
-               
+               return true
             }
-            else{
+          })
                 console.log('you are not registered')
-            }
-            return
-        })
+                return false
     })
 }
 
