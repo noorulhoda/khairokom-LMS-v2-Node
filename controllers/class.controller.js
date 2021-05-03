@@ -10,7 +10,17 @@ module.exports = {
   },
 
   create(req, res, next){
-    const classProps = req.body;
+    const classProps = {
+     
+      "Number": "C1",
+      "StudentsMinAge": "5",
+      "StudentsMaxAge": "7",
+      "StudentGender": "Male",
+      "ClassLink": "aa@gmail.com",
+      "ClassLinkPassword": "123",
+      "StartTime": "2-2-2020",
+      "EndTime": "3-2-2020"
+  };
     console.log(classProps);
     Class.create(classProps)
       .then(clas =>

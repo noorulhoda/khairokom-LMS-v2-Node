@@ -10,17 +10,17 @@ Number:
 },
 StudentsMinAge:
 {
-    type: Int,
+    type: Number,
     required: true
 },
 StudentsMaxAge:
 {
-    type: Int,
+    type: Number,
     required: true
 },
 StudentGender:
 {
-    type: Char,
+    type: String,
     required: true
 },
 ClassLink:
@@ -46,5 +46,5 @@ EndTime:
 })
 
 
-const Class = mongoose.model('Calss', ClassSchema);
+const Class = mongoose.model('Class', ClassSchema);
 module.exports = Class;
