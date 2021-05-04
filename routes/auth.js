@@ -17,12 +17,10 @@ router.get('/signin', (req, res) => {
     .then(user => {
         if(!user) res.status(404).json({error: 'no user with that email found'})
         else {
-            console.log(bcrypt.hash(req.body.password,rounds,(err,hash)+'  '+user.password);
-            if(bcrypt.hash(req.body.password)==user.password)
+            if(req.body.password==user.password)
                  res.status(200).json({token: generateToken(user)})
                 else 
                 res.status(403).json({error: 'passwords do not match'})
-            
         }
     })
     .catch(error => {
@@ -31,12 +29,10 @@ router.get('/signin', (req, res) => {
 });
 
 router.post('/signup', (req, res) => {
-    bcrypt.hash(req.body.password, rounds, (error, hash) => {
-        if (error) res.status(500).json(error)
-        else {
+ 
             const newUser =  User({
                 email: req.body.email,
-                password: hash,
+                password:req.body.password,
                 firstName:req.body.firstName ,
                 lastName:req.body.lastName,
                 userName: req.body.userName,
@@ -52,8 +48,8 @@ router.post('/signup', (req, res) => {
                 .catch(error => {
                     res.status(500).json(error)
                 })
-        }
-    })
+        
+    
 });
 
 router.post('/signout', middleware.verify ,(req, res) => {
