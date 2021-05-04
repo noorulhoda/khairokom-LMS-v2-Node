@@ -4,22 +4,25 @@ const router = express.Router()
 const User = require('../models/user.model')
 const bcrypt = require('bcrypt')
 const rounds = 10
-
 const jwt = require('jsonwebtoken')
 const tokenSecret = "my-token-secret"
-
 const middleware = require('../middlewares')
+
+
+
+
 
 router.get('/signin', (req, res) => {
     User.findOne({userName: req.body.userName})
     .then(user => {
         if(!user) res.status(404).json({error: 'no user with that email found'})
         else {
-            bcrypt.compare(req.body.password, user.password, (error, match) => {
-                if (error) res.status(500).json(error)
-                else if (match) res.status(200).json({token: generateToken(user)})
-                else res.status(403).json({error: 'passwords do not match'})
-            })
+            console.log(bcrypt.hash(req.body.password,rounds,(err,hash)+'  '+user.password);
+            if(bcrypt.hash(req.body.password)==user.password)
+                 res.status(200).json({token: generateToken(user)})
+                else 
+                res.status(403).json({error: 'passwords do not match'})
+            
         }
     })
     .catch(error => {
@@ -52,6 +55,11 @@ router.post('/signup', (req, res) => {
         }
     })
 });
+
+router.post('/signout', middleware.verify ,(req, res) => {
+middleware.blackListTokens.push(req.headers.authorization);
+res.send('signedOut')
+})
 
 router.get('/jwt-test', middleware.verify , (req, res) => {
  if(req.user.role=='Admin')res.send('you are admin')
