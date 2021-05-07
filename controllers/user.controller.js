@@ -67,21 +67,7 @@ login(req,res,next){
 }
 ,
 
-  /*register(req,res,next){
-    let users=[];
-    const limit = parseInt(req.query.limit) || ''
-    user.find({}).limit(limit)
-    .then(usrs => users=usrs)
-    .catch(next)
-    users.forEach(account => {
-        if (account.email == req.body.email) {
-            return
-        }
-    })
-    users.push(req.body);
-    console.log('registeredSuccessfully')
-  }
-,*/
+
 login(req,res,next){
     console.log("logging");
     let users= this.all;

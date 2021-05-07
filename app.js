@@ -12,21 +12,31 @@ const commentRoutes=require('./routes/comment.route')
 const authRoute = require('./routes/auth')
 
 
-
-
-
-
 var db='mongodb+srv://khairokom:khairokom@cluster0.jo718.mongodb.net/khairokom'
 mongoose.connect(db,{useNewUrlParser: true,  useUnifiedTopology: true});
 
 
-var port=8050;
+var port=8080;
 app.listen(port,function(){
     console.log('listening.....'+port);
 })
 
-app.use(cors());
+/*app.use(cors());
 
+var allowedDomains = ['http://localhost:8080'];
+app.use(cors({
+  origin: function (origin, callback) {
+    // bypass the requests with no origin (like curl requests, mobile apps, etc )
+    if (!origin) return callback(null, true);
+ 
+    if (allowedDomains.indexOf(origin) === -1) {
+      var msg = `This site ${origin} does not have an access. Only specific domains are allowed to access it.`;
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
+*/
 app.use(bodyParser.json());
 app.use('', authRoute)
 customerRoutes(app)
