@@ -12,15 +12,16 @@ const middleware = require('../middlewares')
 
 
 
-router.get('/signin', (req, res) => {
+router.get('/api/signin', (req, res) => {
     User.findOne({userName: req.body.userName})
     .then(user => {
         if(!user) res.status(404).json({error: 'no user with that email found'})
         else {
-            if(req.body.password==user.password)
-                 res.status(200).json({token: generateToken(user)})
-                else 
-                res.status(403).json({error: 'passwords do not match'})
+            bcrypt.compare(req.body.password, user.password, (error, match) => {
+                if (error) res.status(500).json(error)
+                else if (match) res.status(200).json({token: generateToken(user)})
+                else res.status(403).json({error: 'passwords do not match'})
+            })
         }
     })
     .catch(error => {
@@ -28,11 +29,56 @@ router.get('/signin', (req, res) => {
     })
 });
 
-router.post('/signup', (req, res) => {
- 
+/* 
+router.post('/api/signup', (req, res) => {
+    let existed=false;
+    user.find({} , (err, users) => {
+      if(err) console.log('erroooooor');
+      users.map(account => {
+        if(account.email==req.body.email||account.userName==req.body.userName ){
+        existed=true;
+        return
+      }
+      })
+      if(!existed)
+      {console.log(existed);
+        bcrypt.hash(req.body.password, rounds, (error, hash) => {
+            if (error) res.status(500).json(error)
+            else {     
+                const newUser =  User({
+                    email: req.body.email,
+                    password:hash,
+                    firstName:req.body.firstName ,
+                    lastName:req.body.lastName,
+                    userName: req.body.userName,
+                    role:req.body.role ,
+                    gender:req.body.gender,
+                    age: req.body.age,
+                    img: req.body.img
+                })
+                newUser.save()
+                    .then(user => {
+                        console.log(user);
+                        res.status(200).json({token: generateToken(user)})
+                    })
+                    .catch(error => {
+                        res.status(500).json(error)
+                    })
+            }
+        })   
+    }})
+    res.send('this user already taken');
+  })
+
+*/
+router.post('/api/signup', (req, res) => {
+    
+    bcrypt.hash(req.body.password, rounds, (error, hash) => {
+        if (error) res.status(500).json(error)
+        else {     
             const newUser =  User({
                 email: req.body.email,
-                password:req.body.password,
+                password:hash,
                 firstName:req.body.firstName ,
                 lastName:req.body.lastName,
                 userName: req.body.userName,
@@ -48,14 +94,11 @@ router.post('/signup', (req, res) => {
                 .catch(error => {
                     res.status(500).json(error)
                 })
-        
-    
+        }
+    })
 });
 
-router.post('/signout', middleware.verify ,(req, res) => {
-middleware.blackListTokens.push(req.headers.authorization);
-res.send('signedOut')
-})
+
 
 router.get('/jwt-test', middleware.verify , (req, res) => {
  if(req.user.role=='Admin')res.send('you are admin')
