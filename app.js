@@ -21,10 +21,23 @@ app.listen(port,function(){
     console.log('listening.....'+port);
 })
 
+
+app.use((req, res, next) => {
+  const allowedOrigins = ['http://127.0.0.1:8080', 'https://khairokom33.azurewebsites.net','http://localhost:8080','http://localhost:2146'];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+       res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Credentials', true);
+  return next();
+});
+/*
 app.use(function (req, res, next) {
 
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080/');
+  res.setHeader('Access-Control-Allow-Origin', 'https://khairokom33.azurewebsites.net');
 
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -39,7 +52,7 @@ app.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
-
+*/
 app.use(bodyParser.json());
 app.use('', authRoute)
 customerRoutes(app)
