@@ -108,5 +108,10 @@ login(req,res,next){
     user.find({userName:req.params.userName}).limit(1)
     .then(user => res.status(200).send(user))
     .catch(next)
+  },
+  findById(req, res, next){
+    user.find({id:req.params.id}).limit(1)
+    .then(user => res.status(200).send(user))
+    .catch(next)
   }
 };
