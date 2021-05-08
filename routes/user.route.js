@@ -2,7 +2,7 @@ const userController  = require('../controllers/user.controller');
 const middleware = require('../middlewares')
 
 module.exports = (app) =>{
-app.get('/api/user',middleware.verify,
+app.get('/api/user',
     userController.all);
 
  app.post('/api/user/register',
