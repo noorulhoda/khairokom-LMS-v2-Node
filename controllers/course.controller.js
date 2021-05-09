@@ -35,7 +35,7 @@ module.exports = {
       .catch(next);
   },
   findById(req, res, next){
-    course.find({id:req.params.id}).limit(1)
+    Course.find({id:req.params.id}).limit(1)
     .then(course => res.status(200).send(course))
     .catch(next)
   }
