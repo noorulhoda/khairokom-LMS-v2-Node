@@ -11,5 +11,8 @@ module.exports = (app) =>{
    CommentController.edit);
 
   app.delete('/api/comment/:id',
-   CommentController.delete)
+   CommentController.delete);
+
+  app.get('/api/comment/:id',
+   CommentController.findById)
 }

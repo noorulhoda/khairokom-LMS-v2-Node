@@ -33,5 +33,10 @@ module.exports = {
     Comment.findByIdAndRemove({_id: commentId})
       .then(comment => res.status(204).send(comment))
       .catch(next);
+  },
+  findById(req, res, next){
+    Comment.find({id:req.params.id}).limit(1)
+    .then(comment => res.status(200).send(comment))
+    .catch(next)
   }
 };
