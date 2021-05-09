@@ -12,7 +12,7 @@ module.exports = {
   create(req, res, next){
     const categoryProps = req.body;
     console.log(categoryProps);
-    Category.create(customerProps)
+    Category.create(categoryProps)
       .then(category =>
         res.status(201).send(category)) 
       .catch(next) 
