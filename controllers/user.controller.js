@@ -110,7 +110,8 @@ login(req,res,next){
     .catch(next)
   },
   findById(req, res, next){
-    let u=user.findById(req.body.id);
-    res.status(200).send(u);
+      user.find({_id:req.params.id}).limit(1)
+      .then(users => res.status(200).send(users))
+      .catch(next)
   }
 };
