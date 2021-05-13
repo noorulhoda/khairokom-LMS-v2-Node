@@ -22,8 +22,8 @@ module.exports = {
  edit(req, res, next){
     const CourseId = req.params.id;
     const courseProps = req.body;
-    Course.findByIdAndUpdate({_id: courseId}, courseProps)
-    .then(() => Course.findById({_id: courseId}))
+    Course.findByIdAndUpdate({_id: CourseId}, courseProps)
+    .then(() => Course.findById({_id: CourseId}))
     .then(course => res.status(200).send(course))
     .catch(next);
   },
