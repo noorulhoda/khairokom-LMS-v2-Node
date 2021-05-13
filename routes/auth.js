@@ -8,10 +8,6 @@ const jwt = require('jsonwebtoken')
 const tokenSecret = "my-token-secret"
 const middleware = require('../middlewares')
 
-
-
-
-
 router.post('/api/signin', (req, res) => {
     User.findOne({userName: req.body.userName})
     .then(user => {
