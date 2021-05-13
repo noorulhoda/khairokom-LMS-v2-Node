@@ -22,10 +22,5 @@ app.post('/api/user/login',
     )
     app.get('/api/user/:id',
     userController.findById)
- 
-
-
-
-
 
 }

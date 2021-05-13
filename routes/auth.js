@@ -12,10 +12,10 @@ const middleware = require('../middlewares')
 
 
 
-router.get('/api/signin', (req, res) => {
+router.post('/api/signin', (req, res) => {
     User.findOne({userName: req.body.userName})
     .then(user => {
-        if(!user) res.status(404).json({error: 'no user with that email found'})
+        if(!user) res.status(404).json({error: 'no user with that userName found'})
         else {
             bcrypt.compare(req.body.password, user.password, (error, match) => {
                 if (error) res.status(500).json(error)
