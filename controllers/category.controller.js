@@ -33,5 +33,10 @@ module.exports = {
     Category.findByIdAndRemove({_id: categoryId})
       .then(category => res.status(204).send(category))
       .catch(next);
+  },
+   findById(req, res, next){
+    Category.find({id:req.params.id}).limit(1)
+    .then(category => res.status(200).send(category))
+    .catch(next)
   }
 };
