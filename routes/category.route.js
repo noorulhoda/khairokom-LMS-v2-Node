@@ -11,5 +11,8 @@ module.exports = (app) =>{
    categoryController.edit);
 
   app.delete('/api/catgeory/:id',
-   categoryController.delete)
+   categoryController.delete);
+
+  app.get('/api/catgeory/:id',
+   categoryController.findById)
 }
