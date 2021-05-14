@@ -11,5 +11,8 @@ module.exports = (app) =>{
    classController.edit);
 
   app.delete('/api/class/:id',
-   classController.delete)
+   classController.delete);
+
+  app.get('/api/class/:id',
+   classController.findById)
 }
