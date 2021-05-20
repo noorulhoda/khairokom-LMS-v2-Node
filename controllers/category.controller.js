@@ -1,7 +1,7 @@
 const Category = require('../models/Category.model');
 
 module.exports = {
-
+  
   all(req, res, next){
     const limit = parseInt(req.query.limit) || ''
     Category.find({}).limit(limit)

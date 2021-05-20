@@ -1,5 +1,7 @@
 const Course = require('../models/course.model');
 
+
+
 module.exports = {
 
   all(req, res, next){
@@ -11,12 +13,11 @@ module.exports = {
 
   create(req, res, next){
     const courseProps = req.body;
-    console.log(courseProps);
+    //console.log(courseProps);
     Course.create(courseProps)
       .then(course =>
         res.status(201).send(course)) 
-      .catch(next) 
-
+      .catch(next);
   },
 
  edit(req, res, next){
@@ -35,7 +36,7 @@ module.exports = {
       .catch(next);
   },
   findById(req, res, next){
-    Course.find({id:req.params.id}).limit(1)
+    Course.find({_id:req.params.id}).limit(1)
     .then(course => res.status(200).send(course))
     .catch(next)
   }

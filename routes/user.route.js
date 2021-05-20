@@ -17,7 +17,7 @@ app.post('/api/user/login',
   app.delete('/api/user/:id',
    userController.delete)
 
-   app.get('api/user/profile/:userName',
+   app.get('api/user/:userName',
     userController.findByUserName
     )
     app.get('/api/user/:id',
