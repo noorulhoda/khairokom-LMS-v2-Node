@@ -33,5 +33,10 @@ module.exports = {
     Class.findByIdAndRemove({_id: classId})
       .then(clas => res.status(204).send(clas))
       .catch(next);
+  },
+   findById(req, res, next){
+    Class.find({_id:req.params.id}).limit(1)
+    .then(clas => res.status(200).send(clas))
+    .catch(next)
   }
 };

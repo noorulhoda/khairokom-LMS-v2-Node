@@ -10,6 +10,9 @@ module.exports = (app) =>{
   app.put('/api/category/:id',
    categoryController.edit);
 
-  app.delete('/api/catgeory/:id',
-   categoryController.delete)
+  app.delete('/api/category/:id',
+   categoryController.delete);
+
+  app.get('/api/category/:id',
+   categoryController.findById)
 }
