@@ -21,7 +21,15 @@ categoryID:
 {
     type:String,
     required:true
-}
+},
+
+  teachers: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users"
+    }
+  ]
+
 
 })
 

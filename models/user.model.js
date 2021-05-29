@@ -27,11 +27,6 @@ email:
 {
     type: String,
     required: true
-},
-role:
-{
-    type: String,
-    required: true   
 }
 ,
 img:
@@ -49,14 +44,28 @@ gender:
     type: String,
     required: true   
 }
+,
+roles: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "roles"
+    }
+  ],
 
+joinedClasses: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "classes"
+    }
+  ], 
+  teachedCourses: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "courses"
+    }]
 
 });
 
-let role={
-    'Admin':'Admin',
-    'Teacher':'Teacher',
-    'Student':'Student'
-};
+
 const user = mongoose.model('users', userSchema);
 module.exports = user;

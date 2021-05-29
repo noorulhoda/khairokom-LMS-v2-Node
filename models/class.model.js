@@ -33,16 +33,33 @@ ClassLinkPassword:
     type: String,
     required: true
 },
-StartTime:
+StartDate:
 {
     type: Date,
     required: true
 },
-EndTime:
+EndDate:
 {
     type: Date,
     required: true
-}
+},
+courseId:
+{
+    type:String,
+    required:true
+},
+teacherId:
+{
+    type:String,
+    required:true
+},
+students: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users"
+    }
+  ]
+  ,
 })
 
 
