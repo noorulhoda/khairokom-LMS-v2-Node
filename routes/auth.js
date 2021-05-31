@@ -77,6 +77,10 @@ router.post('/api/signup', (req, res) => {
               // Make sure user doesn't already exist
             if (user) return res.status(400).send({ msg: 'The email address you have entered is already associated with another account.' });
             })
+            User.findOne({ userName: req.body.userName }, function (err, user) {
+                // Make sure user doesn't already exist
+              if (user) return res.status(400).send({ msg: 'The userName  is already taken.' });
+              })
             const newUser =  User({
                 email: req.body.email,
                 password:hash,
