@@ -23,14 +23,12 @@ categoryID:
     required:true
 },
 
-  teachers: [
+teachers: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users"
     }
   ]
-
-
 })
 
 const Course = mongoose.model('Course', CourseSchema);

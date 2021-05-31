@@ -34,11 +34,21 @@ img:
     type: String,
     required: true   
 }
-,age:
+,birthDate:
 {
-    type: Number,
+    type: Date,
     required: true   
 },
+country:
+{
+  type: String,
+  required: true  
+},
+phone:{
+  type: String,
+    required: true  
+}
+,
 gender:
 {
     type: String,
