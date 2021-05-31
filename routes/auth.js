@@ -78,10 +78,12 @@ router.post('/api/signup', (req, res) => {
                 firstName:req.body.firstName ,
                 lastName:req.body.lastName,
                 userName: req.body.userName,
-                role:req.body.role ,
+                roles:req.body.roles ,
                 gender:req.body.gender,
-                age: req.body.age,
-                img: req.body.img
+                birtDate: req.body.birthDate,
+                img: req.body.img,
+                country:req.body.country,
+                phone:req.body.country
             })
             newUser.save()
                 .then(user => {
