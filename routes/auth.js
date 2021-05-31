@@ -71,7 +71,12 @@ router.post('/api/signup', (req, res) => {
     
     bcrypt.hash(req.body.password, rounds, (error, hash) => {
         if (error) res.status(500).json(error)
-        else {     
+        
+        else { 
+            User.findOne({ email: req.body.email }, function (err, user) {
+              // Make sure user doesn't already exist
+            if (user) return res.status(400).send({ msg: 'The email address you have entered is already associated with another account.' });
+            })
             const newUser =  User({
                 email: req.body.email,
                 password:hash,
@@ -80,7 +85,7 @@ router.post('/api/signup', (req, res) => {
                 userName: req.body.userName,
                 roles:req.body.roles ,
                 gender:req.body.gender,
-                birtDate: req.body.birthDate,
+                birthDate: req.body.birthDate,
                 img: req.body.img,
                 country:req.body.country,
                 phone:req.body.country

@@ -5,7 +5,8 @@ var userSchema=new Schema({
 userName:
 {
     type: String,
-    required: true
+    required: true,
+   // unique : true
 },
 password:
 {
@@ -26,7 +27,8 @@ lastName:
 email:
 {
     type: String,
-    required: true
+    required: true,
+    // unique : true
 }
 ,
 img:
