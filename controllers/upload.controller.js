@@ -31,7 +31,7 @@ const uploadFile = async (req, res) => {
 };
 
 const getFilesList = (req, res) => {
-  const path = __basedir + "/uploads/";
+  const path = __basedir + "/public/uploads/";
 
   fs.readdir(path, function (err, files) {
     if (err) {
@@ -55,7 +55,7 @@ const getFilesList = (req, res) => {
 
 const downloadFiles = (req, res) => {
     const fileName = req.params.name;
-    const path = __basedir + "/uploads/";
+    const path = __basedir + "/public/uploads/";
   
     res.download(path + fileName, (err) => {
       if (err) {

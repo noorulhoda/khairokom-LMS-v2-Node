@@ -26,7 +26,7 @@ app.listen(port,function(){
 
 //middleWares
 app.use((req, res, next) => {
-  const allowedOrigins = ['http://127.0.0.1:8080', 'https://khairokom33.azurewebsites.net','http://localhost:8080','http://localhost:2146','http://localhost:4200'];
+  const allowedOrigins = ['http://127.0.0.1:8080', 'https://khairokom2.azurewebsites.net','http://localhost:8080','http://localhost:2146','http://localhost:4200'];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
        res.setHeader('Access-Control-Allow-Origin', origin);
@@ -36,6 +36,8 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', true);
   return next();
 });
+
+
 
 app.use(bodyParser.json());
 app.use('', authRoute)
