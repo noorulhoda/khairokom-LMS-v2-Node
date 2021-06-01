@@ -36,6 +36,7 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', true);
   return next();
 });
+
 app.use(bodyParser.json());
 app.use('', authRoute)
 app.use((err, req, res, next)=>{
