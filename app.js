@@ -37,7 +37,7 @@ app.use((req, res, next) => {
   return next();
 });
 
-uploadRoute(app)
+
 
 app.use(bodyParser.json());
 app.use('', authRoute)
@@ -53,6 +53,6 @@ courseRoutes(app)
 commentRoutes(app)
 sessionRoutes(app)
 roleRoutes(app)
-
+uploadRoute(app)
 
 
