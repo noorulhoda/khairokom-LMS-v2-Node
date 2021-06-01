@@ -43,7 +43,11 @@ app.use((err, req, res, next)=>{
   res.status(422).send({error: err.message})
 })
 
-
+app.get('/',(req, res, next)=>{
+ 
+ res.status(200).send("Khairokom_API")
+  .catch(next)
+})
 userRoutes(app)
 categoryRoutes(app)
 classRoutes(app)

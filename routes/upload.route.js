@@ -1,6 +1,4 @@
 
-
-
 const uploadcontroller = require("../controllers/upload.controller");
 
 let routes = (app) => {
