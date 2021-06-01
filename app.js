@@ -3,7 +3,6 @@ var app=express();
 var bodyParser=require('body-parser');
 var mongoose=require('mongoose');
 
-const customerRoutes = require('./routes/CustomerRoutes')
 const userRoutes=require('./routes/user.route')
 const categoryRoutes=require('./routes/category.route')
 const classRoutes=require('./routes/class.route')
@@ -37,6 +36,7 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', true);
   return next();
 });
+
 app.use(bodyParser.json());
 app.use('', authRoute)
 app.use((err, req, res, next)=>{
@@ -44,7 +44,6 @@ app.use((err, req, res, next)=>{
 })
 
 
-customerRoutes(app)
 userRoutes(app)
 categoryRoutes(app)
 classRoutes(app)
