@@ -12,6 +12,7 @@ const commentRoutes=require('./routes/comment.route')
 const roleRoutes=require('./routes/role.route')
 const sessionRoutes=require('./routes/session.route')
 const authRoute = require('./routes/auth')
+const uploadRoute=require('./routes/upload.route')
 
 
 var db='mongodb+srv://khairokom:khairokom@cluster0.jo718.mongodb.net/khairokom'
@@ -26,7 +27,7 @@ app.listen(port,function(){
 
 //middleWares
 app.use((req, res, next) => {
-  const allowedOrigins = ['http://127.0.0.1:8080', 'https://khairokom33.azurewebsites.net','http://localhost:8080','http://localhost:2146'];
+  const allowedOrigins = ['http://127.0.0.1:8080', 'https://khairokom33.azurewebsites.net','http://localhost:8080','http://localhost:2146','http://localhost:4200'];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
        res.setHeader('Access-Control-Allow-Origin', origin);
@@ -52,5 +53,6 @@ courseRoutes(app)
 commentRoutes(app)
 sessionRoutes(app)
 roleRoutes(app)
+uploadRoute(app)
 
 
