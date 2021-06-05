@@ -1,4 +1,4 @@
-const upload = require("../middleware/fileUpload");
+const upload = require("../middlewares/fileUpload");
 
 const URL = "https://khairokom2.azurewebsites.net/files/";
 const fs = require("fs");
