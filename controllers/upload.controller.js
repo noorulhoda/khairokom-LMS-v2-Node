@@ -1,6 +1,6 @@
-const upload = require("../middlewares/fileUpload");
+const upload = require("../middleware/fileUpload");
 
-const URL = "https://khairokom2.azurewebsites.net/";
+const URL = "http://localhost:8888/files/";
 const fs = require("fs");
 
 
@@ -32,7 +32,6 @@ const uploadFile = async (req, res) => {
 
 const getFilesList = (req, res) => {
   const path = __basedir + "/public/uploads/";
-  console.log(__basedir)
 
   fs.readdir(path, function (err, files) {
     if (err) {
