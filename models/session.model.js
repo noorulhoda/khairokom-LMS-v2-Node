@@ -4,11 +4,11 @@ var Schema=mongoose.Schema;
 var SessionSchema=new Schema({
 sessionNumber:
 {
-    type: Number,
+    type: String,
     required: true
 },
 
-classID:
+classId:
 {
     type:String,
     required:true

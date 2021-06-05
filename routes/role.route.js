@@ -15,4 +15,8 @@ module.exports = (app) =>{
 
   app.get('/api/role/:id',
    RoleController.findById)
+
+  app.get('/api/role/withType/:type',
+   RoleController.findByRoleType)
+   
 }

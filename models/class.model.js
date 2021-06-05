@@ -43,17 +43,17 @@ EndDate:
     type: Date,
     required: true
 },
-courseId:
+CourseId:
 {
     type:String,
     required:true
 },
-teacherId:
+TeacherId:
 {
     type:String,
     required:true
 },
-students: [
+Students: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users"

@@ -39,5 +39,15 @@ module.exports = {
     Role.find({_id:req.params.id}).limit(1)
     .then(role => res.status(200).send(role))
     .catch(next)
-  }
+  },
+  findByRoleType(req, res, next){
+    Role.find({type:req.params.type}).limit(1)
+    .then( role=> res.status(200).send(role))
+    .catch(next)
+  },
+  /*findIdByRoleType(req, res, next){
+    Role.find({type:req.params.type}).limit(1)
+    .then( role=> res.status(200).send(role._id))
+    .catch(next)
+  }*/
 };

@@ -46,9 +46,8 @@ app.use((err, req, res, next)=>{
 })
 
 app.get('/',(req, res, next)=>{
- 
  res.status(200).send("Khairokom_API")
-  .catch(next)
+ .catch(next)
 })
 userRoutes(app)
 categoryRoutes(app)
