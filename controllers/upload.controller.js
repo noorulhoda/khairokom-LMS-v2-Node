@@ -32,6 +32,7 @@ const uploadFile = async (req, res) => {
 
 const getFilesList = (req, res) => {
   const path = __basedir + "/public/uploads/";
+  console.log(__basedir)
 
   fs.readdir(path, function (err, files) {
     if (err) {
