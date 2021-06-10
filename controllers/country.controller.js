@@ -21,7 +21,7 @@ module.exports = {
   }
 ,
   findByName(req, res, next){
-    Country.find({_id:req.params.name}).limit(1)
+    Country.find({name:req.params.name}).limit(1)
     .then(country => res.status(200).send(country))
     .catch(next)
   }
