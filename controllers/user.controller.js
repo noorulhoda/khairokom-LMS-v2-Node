@@ -1,3 +1,4 @@
+const { findById } = require('../models/user.model');
 const user = require('../models/user.model');
 
 module.exports = {
@@ -104,14 +105,19 @@ login(req,res,next){
       .then(user => res.status(204).send(user))
       .catch(next);
   },
-  findByUserName(req, res, next){
-    user.find({userName:req.params.userName}).limit(1)
-    .then(user => res.status(200).send(user))
-    .catch(next)
-  },
-  findById(req, res, next){
-      user.find({_id:req.params.id}).limit(1)
-      .then(users => res.status(200).send(users))
+
+  findByName(req, res, next){
+      user.find({userName:req.params.userName}).limit(1)
+      .then(user => res.status(200).send(user))
       .catch(next)
   }
+,
+  findById(req, res, next){
+    user.find({_id:req.params.id}).limit(1)
+    .then(user => res.status(200).send(user))
+    .catch(next)
+}
+  
+
+
 };
