@@ -76,7 +76,7 @@ joinedClasses: [
       ref: "courses"
     }],
     suitableTimes:[{
-      type:Date,
+      type:Number,
       required:true
     }]
     ,
