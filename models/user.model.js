@@ -74,10 +74,19 @@ joinedClasses: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "courses"
+    }],
+    suitableTimes:[{
+      type:Number,
+      required:true
     }]
+    ,
+    verifiedTeacher:{
+      type:Boolean,
+      requred:true
+      
+    }
 
 });
-
 
 const user = mongoose.model('users', userSchema);
 module.exports = user;

@@ -11,7 +11,7 @@ const commentRoutes=require('./routes/comment.route')
 const roleRoutes=require('./routes/role.route')
 const sessionRoutes=require('./routes/session.route')
 const authRoute = require('./routes/auth')
-const uploadRoute=require('./routes/upload.route')
+const countryRoute=require('./routes/country.route')
 
 
 var db='mongodb+srv://khairokom:khairokom@cluster0.jo718.mongodb.net/khairokom'
@@ -56,6 +56,6 @@ courseRoutes(app)
 commentRoutes(app)
 sessionRoutes(app)
 roleRoutes(app)
-uploadRoute(app)
+countryRoute(app)
 
 
