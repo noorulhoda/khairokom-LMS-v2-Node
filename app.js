@@ -19,7 +19,7 @@ var db='mongodb+srv://khairokom:khairokom@cluster0.jo718.mongodb.net/khairokom'
 mongoose.connect(db,{useNewUrlParser: true,  useUnifiedTopology: true});
 
 
-var port=8080;
+var port=8050;
 app.listen(port,function(){
     console.log('listening.....'+port);
 })
