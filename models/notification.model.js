@@ -27,6 +27,12 @@ studentId:
     
 }
 
+,isRead:
+{
+    type: Boolean,
+    
+}
+
   
 })
 
