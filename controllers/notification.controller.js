@@ -1,7 +1,5 @@
 const Notification = require('../models/notification.model');
 
-
-
 module.exports = {
 
   all(req, res, next){
