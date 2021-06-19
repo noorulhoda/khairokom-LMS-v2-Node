@@ -7,6 +7,10 @@ message:
     type: String,
   
 },
+starsNumber:{
+    type:Number,
+    reequired:true
+},
 setterId:
 {
     type: String,
@@ -16,11 +20,15 @@ getterId:
 {
     type: String,
 },
-feedbackedRole:{
+feedbackedUserType:{
     type:String,
     required:true
 }
-
+,
+classId:{
+    type:String
+    ,required:true
+}
 })
 
 const Feedback = mongoose.model('feedbacks', FeedbackSchema);
