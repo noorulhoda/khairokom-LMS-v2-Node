@@ -28,6 +28,10 @@ feedbackedUserType:{
 classId:{
     type:String
     ,required:true
+},
+courseId:{
+    type:String
+    ,required:true
 }
 })
 

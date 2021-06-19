@@ -60,6 +60,9 @@ Students: [
     }
   ]
   ,
+IsFeedbacked:{
+    type:Boolean
+}  
 })
 
 
