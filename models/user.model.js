@@ -66,7 +66,7 @@ roles: [
 
 joinedClasses: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       ref: "classes"
     }
   ], 
