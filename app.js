@@ -12,7 +12,9 @@ const roleRoutes=require('./routes/role.route')
 const sessionRoutes=require('./routes/session.route')
 const authRoute = require('./routes/auth')
 const countryRoute=require('./routes/country.route');
+const feedbackRoute = require('./routes/feedback.route');
 const notificationRoute = require('./routes/notification.route');
+
 
 
 var db='mongodb+srv://khairokom:khairokom@cluster0.jo718.mongodb.net/khairokom'
@@ -59,5 +61,6 @@ sessionRoutes(app)
 roleRoutes(app)
 countryRoute(app)
 notificationRoute(app)
+feedbackRoute(app)
 
 

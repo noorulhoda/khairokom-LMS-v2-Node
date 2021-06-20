@@ -27,7 +27,18 @@ studentId:
     
 }
 
-  
+,isRead:
+{
+    type: Boolean,
+    
+}
+,
+isFeedbackFrom:{
+    type:String
+}
+,classId:{
+      type:String
+    }
 })
 
 const Notification = mongoose.model('notifications', NotificationSchema);

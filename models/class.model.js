@@ -55,11 +55,14 @@ TeacherId:
 },
 Students: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       ref: "users"
     }
   ]
   ,
+IsFeedbacked:{
+    type:Boolean
+}  
 })
 
 
