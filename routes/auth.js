@@ -75,40 +75,55 @@ router.post('/api/signup', (req, res) => {
         else { 
             User.findOne({ email: req.body.email }, function (err, user) {
               // Make sure user doesn't already exist
-            if (user) {
+            if (user)
+            {
                 err='The email address you have entered is already associated with another account.';
-                return res.status(400).json({ errMsg: 'هذا البريد الالكتروني مسجل لدينا بالفعل' });}
+                return res.status(400).json({ errMsg: 'هذا البريد الالكتروني مسجل لدينا بالفعل' });
+            }
+            else 
+            {
+                User.findOne({ userName: req.body.userName }, function (err, user) {
+                    // Make sure user doesn't already exist
+                  if (user)
+                  { 
+                    err=  'The userName  is already taken.' 
+                    return res.status(400).json({ errMsg: ' اسم المستخدم غير متاح جرب اسما آخر' });
+                 }
+                 else
+                 {
+                    const newUser =  User({
+                        email: req.body.email,
+                        password:hash,
+                        firstName:req.body.firstName ,
+                        lastName:req.body.lastName,
+                        userName: req.body.userName,
+                        roles:req.body.roles ,
+                        gender:req.body.gender,
+                        birthDate: req.body.birthDate,
+                        img: req.body.img,
+                        country:req.body.country,
+                        phone:req.body.phone,
+                        suitableTimes:req.body.suitableTimes,
+                        verifiedTeacher:req.body.verifiedTeacher
+                    })
+                    newUser.save()
+                        .then(user => {
+                            res.status(200).json({token: generateToken(user)})
+                        })
+                        .catch(error => {
+                            res.status(500).json({"errMsg":"تأكد أنك ملأت جميع الحقول "})
+                        })
+
+                 }
+                  })
+               
+
+            }
+
 
 
             })
-            User.findOne({ userName: req.body.userName }, function (err, user) {
-                // Make sure user doesn't already exist
-              if (user){ 
-                err=  'The userName  is already taken.' 
-                return res.status(400).json({ errMsg: ' اسم المستخدم غير متاح جرب اسما آخر' });}
-              })
-            const newUser =  User({
-                email: req.body.email,
-                password:hash,
-                firstName:req.body.firstName ,
-                lastName:req.body.lastName,
-                userName: req.body.userName,
-                roles:req.body.roles ,
-                gender:req.body.gender,
-                birthDate: req.body.birthDate,
-                img: req.body.img,
-                country:req.body.country,
-                phone:req.body.phone,
-                suitableTimes:req.body.suitableTimes,
-                verifiedTeacher:req.body.verifiedTeacher
-            })
-            newUser.save()
-                .then(user => {
-                    res.status(200).json({token: generateToken(user)})
-                })
-                .catch(error => {
-                    res.status(500).json({"errMsg":"تأكد أنك ملأت جميع الحقول "})
-                })
+           
         }
     })
 });
