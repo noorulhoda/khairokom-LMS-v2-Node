@@ -11,12 +11,12 @@ const middleware = require('../middlewares')
 router.post('/api/signin', (req, res) => {
     User.findOne({userName: req.body.userName})
     .then(user => {
-        if(!user) res.status(404).json({error: 'no user with that userName found'})
+        if(!user) res.status(404).json({errMsg: 'اسم المستخدم غير صحيح'})
         else {
             bcrypt.compare(req.body.password, user.password, (error, match) => {
                 if (error) res.status(500).json(error)
                 else if (match) res.status(200).json({token: generateToken(user)})
-                else res.status(403).json({error: 'passwords do not match'})
+                else res.status(403).json({errMsg: 'يوجد خطأ في كلمة السر'})
             })
         }
     })
@@ -70,16 +70,22 @@ router.post('/api/signup', (req, res) => {
 router.post('/api/signup', (req, res) => {
     
     bcrypt.hash(req.body.password, rounds, (error, hash) => {
-        if (error) res.status(500).json(error)
+        if (error) res.status(502).json(error)
         
         else { 
             User.findOne({ email: req.body.email }, function (err, user) {
               // Make sure user doesn't already exist
-            if (user) return res.status(400).send({ msg: 'The email address you have entered is already associated with another account.' });
+            if (user) {
+                err='The email address you have entered is already associated with another account.';
+                return res.status(400).json({ errMsg: 'هذا البريد الالكتروني مسجل لدينا بالفعل' });}
+
+
             })
             User.findOne({ userName: req.body.userName }, function (err, user) {
                 // Make sure user doesn't already exist
-              if (user) return res.status(400).send({ msg: 'The userName  is already taken.' });
+              if (user){ 
+                err=  'The userName  is already taken.' 
+                return res.status(400).json({ errMsg: ' اسم المستخدم غير متاح جرب اسما آخر' });}
               })
             const newUser =  User({
                 email: req.body.email,
@@ -101,7 +107,7 @@ router.post('/api/signup', (req, res) => {
                     res.status(200).json({token: generateToken(user)})
                 })
                 .catch(error => {
-                    res.status(500).json(error)
+                    res.status(500).json({"errMsg":"تأكد أنك ملأت جميع الحقول "})
                 })
         }
     })
