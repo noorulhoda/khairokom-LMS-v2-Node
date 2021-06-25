@@ -16,6 +16,10 @@ senderId:
 {
     type: String,
 },
+senderName:
+{
+    type: String,
+},
 email:
 {
     type: String,
