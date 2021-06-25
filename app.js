@@ -14,6 +14,8 @@ const authRoute = require('./routes/auth')
 const countryRoute=require('./routes/country.route');
 const feedbackRoute = require('./routes/feedback.route');
 const notificationRoute = require('./routes/notification.route');
+const messageRoute = require('./routes/message.route');
+
 
 
 
@@ -62,5 +64,6 @@ roleRoutes(app)
 countryRoute(app)
 notificationRoute(app)
 feedbackRoute(app)
+messageRoute(app)
 
 
