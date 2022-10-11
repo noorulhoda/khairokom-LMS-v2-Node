@@ -24,7 +24,7 @@ mongoose.connect(db,{useNewUrlParser: true,  useUnifiedTopology: true});
 
 
 var port=8050;
-app.listen(port,function(){
+app.listen(process.env.PORT,function(){
     console.log('listening.....'+port);
 })
 
